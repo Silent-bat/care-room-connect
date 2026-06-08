@@ -4,7 +4,7 @@ import { SiteNav, SiteFooter } from "@/components/SiteNav";
 export const Route = createFileRoute("/dashboard")({
   head: () => ({
     meta: [
-      { title: "Dashboard — MedSpace" },
+      { title: "Dashboard — CMG" },
       { name: "description", content: "Manage your room bookings, schedule, and earnings." },
     ],
   }),
@@ -35,7 +35,9 @@ function DashboardPage() {
               <nav className="space-y-1">
                 <a className="block px-3 py-2 rounded-md bg-brand-muted text-brand text-sm font-medium">Dashboard</a>
                 <a className="block px-3 py-2 rounded-md hover:bg-neutral-50 text-text-muted text-sm font-medium">Bookings</a>
+                <Link to="/bookings" className="block px-3 py-2 rounded-md hover:bg-neutral-50 text-text-muted text-sm font-medium">Bookings</Link>
                 <Link to="/invoice" className="block px-3 py-2 rounded-md hover:bg-neutral-50 text-text-muted text-sm font-medium">Financials</Link>
+                <Link to="/rooms" className="block px-3 py-2 rounded-md hover:bg-neutral-50 text-text-muted text-sm font-medium">Browse rooms</Link>
                 <a className="block px-3 py-2 rounded-md hover:bg-neutral-50 text-text-muted text-sm font-medium">Settings</a>
               </nav>
             </aside>

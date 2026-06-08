@@ -5,7 +5,7 @@ import { SiteNav, SiteFooter } from "@/components/SiteNav";
 export const Route = createFileRoute("/invoice")({
   head: () => ({
     meta: [
-      { title: "Invoice generator — MedSpace" },
+      { title: "Invoice generator — CMG" },
       { name: "description", content: "Generate clinical room rental invoices with line items, totals, and tax." },
     ],
   }),
@@ -52,9 +52,10 @@ function InvoicePage() {
             <div className="p-8">
               <div className="flex justify-between items-start mb-12">
                 <div>
-                  <div className="size-6 bg-brand rounded-sm mb-4" />
-                  <p className="text-xs font-semibold">MEDSPACE SYSTEMS LLC</p>
+                  <div className="size-8 bg-brand rounded-md mb-4 grid place-items-center text-white text-xs font-bold">C</div>
+                  <p className="text-xs font-semibold">CONSULTANTS MEDICAL GROUP LLC</p>
                   <p className="text-xs text-text-muted">100 Clinical Way, Chicago IL 60601</p>
+                  <p className="text-xs text-text-muted">EIN 88-1029384 • billing@cmg-health.com</p>
                 </div>
                 <div className="text-right">
                   <h4 className="text-xl font-medium">Invoice #INV-2024-102</h4>
