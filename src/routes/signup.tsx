@@ -5,7 +5,7 @@ import { SiteNav, SiteFooter } from "@/components/SiteNav";
 export const Route = createFileRoute("/signup")({
   head: () => ({
     meta: [
-      { title: "Sign up — MedSpace" },
+      { title: "Sign up — CMG" },
       { name: "description", content: "Create your practitioner account to book HIPAA-compliant clinical rooms." },
     ],
   }),
@@ -21,7 +21,7 @@ function SignupPage() {
       <SiteNav />
       <section className="flex-1 px-6 py-16">
         <div className="max-w-xl mx-auto">
-          <h1 className="text-4xl font-semibold tracking-tight italic mb-3">Join the network.</h1>
+          <h1 className="text-4xl font-semibold tracking-tight mb-3">Join the CMG network.</h1>
           <p className="text-text-muted mb-10">Verified credentials are required. Approval typically takes 24 hours.</p>
 
           <form
