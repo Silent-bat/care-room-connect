@@ -1,8 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/SiteNav";
-import room1 from "@/assets/room-1.jpg";
-import room2 from "@/assets/room-2.jpg";
-import room3 from "@/assets/room-3.jpg";
+import { ROOM_IMAGES, roomById } from "@/lib/cmg-data";
 
 export const Route = createFileRoute("/rooms/$id")({
   head: ({ params }) => ({
@@ -14,11 +12,12 @@ export const Route = createFileRoute("/rooms/$id")({
   component: RoomDetail,
 });
 
-const IMAGES = [room1, room2, room3];
+const IMAGES = ROOM_IMAGES;
 
 function RoomDetail() {
   const { id } = Route.useParams();
-  const img = IMAGES[id.length % 3];
+  const room = roomById(id);
+  const img = room?.img ?? IMAGES[id.length % 3];
 
   return (
     <div className="bg-surface text-text-main font-sans min-h-screen">
@@ -68,12 +67,12 @@ function RoomDetail() {
 
             <aside className="lg:sticky lg:top-24 self-start bg-white rounded-xl ring-1 ring-black/5 p-6 space-y-5">
               <div>
-                <p className="text-[10px] uppercase tracking-widest text-text-muted font-semibold">{id.replace(/-/g, " ")}</p>
-                <h1 className="text-2xl font-semibold tracking-tight mt-1">Clinical Suite</h1>
-                <p className="text-sm text-text-muted mt-1">Chicago, IL • Verified facility</p>
+                <p className="text-[10px] uppercase tracking-widest text-text-muted font-semibold">{room?.specialty ?? "Clinical"}</p>
+                <h1 className="text-2xl font-semibold tracking-tight mt-1">{room?.name ?? "Clinical Suite"}</h1>
+                <p className="text-sm text-text-muted mt-1">{room?.city ?? "Chicago, IL"} • Verified facility</p>
               </div>
               <div className="flex items-baseline gap-1">
-                <span className="text-3xl font-semibold text-brand tabular-nums">$140</span>
+                <span className="text-3xl font-semibold text-brand tabular-nums">${room?.price ?? 140}</span>
                 <span className="text-sm text-text-muted">/ hour</span>
               </div>
               <div className="space-y-3 border-t border-neutral-100 pt-5">

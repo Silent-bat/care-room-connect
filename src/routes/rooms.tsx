@@ -1,9 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteNav, SiteFooter } from "@/components/SiteNav";
-import room1 from "@/assets/room-1.jpg";
-import room2 from "@/assets/room-2.jpg";
-import room3 from "@/assets/room-3.jpg";
+import { ROOMS } from "@/lib/cmg-data";
 
 export const Route = createFileRoute("/rooms")({
   head: () => ({
@@ -15,16 +13,8 @@ export const Route = createFileRoute("/rooms")({
   component: RoomsPage,
 });
 
-const ALL_ROOMS = [
-  { id: "northshore-402", img: room1, name: "Northshore Medical Center, Suite 402", city: "Evanston", specialty: "Diagnostic", price: 140, sqft: 280, available: "Today" },
-  { id: "west-loop-wellness", img: room2, name: "West Loop Wellness Plaza", city: "Chicago", specialty: "Consultation", price: 95, sqft: 180, available: "Today" },
-  { id: "st-luke-hub", img: room3, name: "St. Luke Specialist Hub", city: "Wicker Park", specialty: "Imaging", price: 210, sqft: 340, available: "Tomorrow" },
-  { id: "lakeside-203", img: room1, name: "Lakeside Health Tower, Suite 203", city: "Chicago", specialty: "Consultation", price: 110, sqft: 200, available: "Today" },
-  { id: "north-park-clinic", img: room2, name: "North Park Family Clinic", city: "Skokie", specialty: "General", price: 85, sqft: 160, available: "Oct 28" },
-  { id: "midtown-imaging", img: room3, name: "Midtown Imaging Annex", city: "Chicago", specialty: "Imaging", price: 230, sqft: 360, available: "Today" },
-];
-
-const SPECIALTIES = ["All", "Consultation", "Diagnostic", "Imaging", "General"];
+const ALL_ROOMS = ROOMS;
+const SPECIALTIES = ["All", ...Array.from(new Set(ROOMS.map((r) => r.specialty)))];
 
 function RoomsPage() {
   const [filter, setFilter] = useState("All");
